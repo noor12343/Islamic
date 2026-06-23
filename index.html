@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Islamic Knowledge Hub - Authentic articles, PDFs, and books on Aqeedah, Fiqh, Hadith, Seerah and more.">
+    <title>Islamic World — Knowledge Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --emerald: #1a7659;
+            --dark: #0f1419;
+            --darker: #0a0e14;
+            --light-text: #ccc;
+            --fade-text: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1f2e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(15, 20, 25, 0.98);
+            border-bottom: 3px solid var(--gold);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gold);
+            background: none;
+            border: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), linear-gradient(135deg, rgba(212,175,55,0.1), rgba(26,118,89,0.1));
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .basmala {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin: 1rem 0;
+            color: var(--gold);
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
+            padding: 0 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: rgba(212,175,55,0.1);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.2);
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SEARCH ===== */
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto 3rem;
+            padding: 0 5%;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 20px rgba(212,175,55,0.2);
+        }
+
+        .search-bar input::placeholder {
+            color: var(--fade-text);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.9rem 2rem;
+            background: transparent;
+            border: 2px solid transparent;
+            color: var(--light-text);
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn:hover {
+            color: var(--gold);
+        }
+
+        .tab-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.05), rgba(26,118,89,0.05));
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.6s ease backwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(212,175,55,0.25);
+            border-color: var(--emerald);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--emerald);
+            color: #fff;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-read {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .card:hover .card-read {
+            transform: translateX(5px);
+        }
+
+        /* ===== DETAIL PAGE ===== */
+        .detail-page {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #f8f4eb 0%, #e8e3d8 100%);
+            z-index: 999;
+            overflow-y: auto;
+            color: #333;
+        }
+
+        .detail-page.active {
+            display: block;
+        }
+
+        .detail-header {
+            background: rgba(212,175,55,0.15);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .detail-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .detail-close {
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            border: none;
+            color: #fff;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .detail-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.3);
+        }
+
+        .detail-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--emerald);
+            color: #fff;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .detail-text {
+            background: #fff;
+            border-left: 5px solid var(--gold);
+            padding: 3rem;
+            border-radius: 8px;
+            line-height: 2;
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* ===== ABOUT PAGE ===== */
+        .about-page {
+            display: none;
+        }
+
+        .about-page.active {
+            display: block;
+        }
+
+        .about-content {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            line-height: 2;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--darker);
+            border-top: 3px solid var(--gold);
+            padding: 4rem 5% 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--fade-text);
+            text-decoration: none;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 2px solid var(--gold);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--fade-text);
+            font-size: 0.95rem;
+        }
+
+        .basmala-footer {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== ADMIN BUTTON ===== */
+        .admin-btn-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            border: none;
+            border-radius: 50%;
+            color: #000;
+            font-size: 32px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+            transition: all 0.3s;
+            z-index: 40;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .admin-btn-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.6);
+        }
+
+        /* ===== MODALS ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: linear-gradient(135deg, rgba(15,20,25,0.98), rgba(26,118,89,0.1));
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(212,175,55,0.25);
+            animation: popIn 0.4s ease;
+            margin: auto;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-box h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 20px rgba(212,175,55,0.2);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--fade-text);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding: 0.9rem;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            min-height: 45px;
+            align-content: flex-start;
+        }
+
+        .tag-item {
+            background: var(--emerald);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .tag-item button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .tags-input input {
+            border: none;
+            background: transparent;
+            color: #fff;
+            flex: 1;
+            min-width: 80px;
+            padding: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .tags-input input:focus {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+
+        .btn-submit,
+        .btn-cancel {
+            flex: 1;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            color: #000;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-cancel:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            display: none;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== ADMIN MODE ===== */
+        .admin-mode {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1f2e 100%);
+            z-index: 1999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .admin-mode.active {
+            display: flex;
+        }
+
+        .admin-header {
+            background: rgba(212,175,55,0.1);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        .admin-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--gold), var(--emerald));
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.3);
+        }
+
+        .admin-btn.exit {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .admin-btn.exit:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .admin-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .admin-section {
+            background: rgba(212,175,55,0.05);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .admin-section h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-item {
+            background: rgba(26,118,89,0.1);
+            border: 1px solid var(--emerald);
+            border-radius: 8px;
+            padding: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-item:hover {
+            background: rgba(26,118,89,0.15);
+            border-color: var(--gold);
+        }
+
+        .admin-item-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .admin-item-info h4 {
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-item-info p {
+            color: var(--fade-text);
+            font-size: 0.9rem;
+        }
+
+        .admin-item-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .item-btn {
+            padding: 0.4rem 1rem;
+            background: transparent;
+            border: 1px solid var(--emerald);
+            color: var(--emerald);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .item-btn:hover {
+            background: var(--emerald);
+            color: #fff;
+        }
+
+        .item-btn.delete {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .item-btn.delete:hover {
+            background: #ff6b6b;
+            color: #fff;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header { padding: 1rem 3%; }
+            .logo-text { font-size: 1.1rem; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: block; }
+
+            .hero { padding: 4rem 5% 2rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .basmala { font-size: 2rem; }
+
+            .content-grid { grid-template-columns: 1fr; }
+            .detail-title { font-size: 2.2rem; }
+            .modal-box { max-width: 95%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo" onclick="showHome(event)">
+                <div class="logo-icon">ع</div>
+                <div class="logo-text">Islamic World</div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a onclick="switchTab('articles', this); showHome(event)">Articles</a>
+                <a onclick="switchTab('pdfs', this); showHome(event)">PDFs</a>
+                <a onclick="switchTab('books', this); showHome(event)">Books</a>
+                <a onclick="showAbout(event)">About</a>
+            </div>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+
+    <!-- ===== HOME PAGE ===== -->
+    <div id="homePage">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="basmala">﷽</div>
+                <h1>Islamic Knowledge Hub</h1>
+                <p>Authentic resources for seekers of Islamic knowledge</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToContent()">Browse Library</button>
+                    <button class="btn btn-secondary" onclick="showAbout(event)">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <div class="stats" id="statsContainer"></div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search articles, PDFs, books..." onkeyup="filterContent()">
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <div class="tabs" id="tabsContainer"></div>
+            <div class="content-grid" id="contentGrid"></div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a onclick="switchTab('articles', null); showHome(event)">Articles</a>
+                    <a onclick="switchTab('pdfs', null); showHome(event)">PDFs</a>
+                    <a onclick="switchTab('books', null); showHome(event)">Books</a>
+                    <a onclick="showAbout(event)">About</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a onclick="switchTab('articles', null); showHome(event)">Home</a>
+                    <a onclick="openLoginModal()">Admin</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="basmala-footer">﷽</div>
+                <p>© 2026 Islamic World — Dedicated to spreading authentic knowledge</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== ABOUT PAGE ===== -->
+    <div id="aboutPage" class="about-page">
+        <header>
+            <div class="header-content">
+                <a href="#" class="logo" onclick="showHome(event)">
+                    <div class="logo-icon">ع</div>
+                    <div class="logo-text">Islamic World</div>
+                </a>
+                <div class="nav-links" id="navLinks2">
+                    <a onclick="switchTab('articles', null); showHome(event)">Articles</a>
+                    <a onclick="switchTab('pdfs', null); showHome(event)">PDFs</a>
+                    <a onclick="switchTab('books', null); showHome(event)">Books</a>
+                    <a onclick="showAbout(event)" class="active">About</a>
+                </div>
+                <button class="hamburger" onclick="toggleMenu2()">☰</button>
+            </div>
+        </header>
+
+        <main>
+            <h1 style="color: var(--gold); margin: 3rem 0 1rem; font-family: 'Playfair Display', serif; font-size: 2.8rem; text-align: center;">About Islamic World</h1>
+            <div class="about-content">
+                Islamic World is dedicated to spreading authentic Islamic knowledge through accessible and scholarly resources. Our platform provides comprehensive materials on Islamic theology, jurisprudence, hadith sciences, and related disciplines. We believe in making Islamic learning available to everyone, regardless of their background or expertise level.
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="showHome(event)">Back to Content</button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a onclick="switchTab('articles', null); showHome(event)">Articles</a>
+                    <a onclick="switchTab('pdfs', null); showHome(event)">PDFs</a>
+                    <a onclick="switchTab('books', null); showHome(event)">Books</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="basmala-footer">﷽</div>
+                <p>© 2026 Islamic World — Knowledge Hub</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== DETAIL PAGE ===== -->
+    <div class="detail-page" id="detailPage">
+        <div class="detail-header">
+            <h2 id="detailCategory">Category</h2>
+            <button class="detail-close" onclick="closeDetailPage()">CLOSE</button>
+        </div>
+        <div class="detail-content">
+            <div class="detail-badge" id="detailBadge">Category</div>
+            <h1 class="detail-title" id="detailTitle">Title</h1>
+            <div class="detail-text" id="detailText">Content</div>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN BUTTON ===== -->
+    <button class="admin-btn-float" onclick="openLoginModal()" id="adminBtn">🔒</button>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="modal" id="loginModal">
+        <div class="modal-box">
+            <h2>Admin Access</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="password" id="passwordInput" placeholder="Enter Password" required autofocus>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-submit">LOGIN</button>
+                    <button type="button" class="btn-cancel" onclick="closeLoginModal()">CANCEL</button>
+                </div>
+            </form>
+            <div class="error-msg" id="loginError">Incorrect password</div>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN MODE ===== -->
+    <div class="admin-mode" id="adminMode">
+        <div class="admin-header">
+            <h2>Admin Panel</h2>
+            <div class="admin-controls">
+                <button class="admin-btn" onclick="openAddForm()">ADD CONTENT</button>
+                <button class="admin-btn exit" onclick="exitAdmin()">EXIT</button>
+            </div>
+        </div>
+        <div class="admin-content">
+            <div class="admin-section">
+                <h3>Articles</h3>
+                <div id="articlesList"></div>
+            </div>
+            <div class="admin-section">
+                <h3>PDFs</h3>
+                <div id="pdfsList"></div>
+            </div>
+            <div class="admin-section">
+                <h3>Books</h3>
+                <div id="booksList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FORM MODAL ===== -->
+    <div class="modal" id="formModal">
+        <div class="modal-box">
+            <h2 id="formTitle">Add Content</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Type</label>
+                    <select id="type" required>
+                        <option value="articles">Article</option>
+                        <option value="pdfs">PDF</option>
+                        <option value="books">Book</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="title" placeholder="Content Title" required>
+                </div>
+                <div class="form-group">
+                    <label>Full Content</label>
+                    <textarea id="description" placeholder="Full content..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="category" placeholder="e.g., Fiqh, Aqeedah" required>
+                </div>
+                <div class="form-group">
+                    <label>Tags (Press Enter to add)</label>
+                    <div class="tags-input" id="tagsInput">
+                        <input type="text" id="tagInput" placeholder="Add tags..." onkeypress="handleTagInput(event)">
+                    </div>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-submit">SAVE</button>
+                    <button type="button" class="btn-cancel" onclick="closeFormModal()">CANCEL</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = 'Islamic123';
+        let currentTab = 'articles';
+        let tempTags = [];
+        let editingId = null;
+        let editingType = null;
+        let allContent = [];
+
+        // Initialize
+        if (!localStorage.getItem('islamicContent')) {
+            localStorage.setItem('islamicContent', JSON.stringify({
+                articles: [{
+                    id: 1,
+                    title: 'Islamic Creed Fundamentals',
+                    description: 'Core principles of Islamic belief system and fundamental concepts of Islamic theology and jurisprudence.',
+                    category: 'Aqeedah',
+                    tags: ['Aqeedah', 'Theology'],
+                    type: 'articles'
+                }],
+                pdfs: [],
+                books: []
+            }));
+        }
+
+        function loadContent() {
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            allContent = [...data.articles, ...data.pdfs, ...data.books];
+            renderTabs();
+            renderStats();
+            renderContent(data[currentTab]);
+        }
+
+        function renderTabs() {
+            const container = document.getElementById('tabsContainer');
+            container.innerHTML = `
+                <button class="tab-btn active" onclick="switchTab('articles', this)">✍️ Articles</button>
+                <button class="tab-btn" onclick="switchTab('pdfs', this)">📄 PDFs</button>
+                <button class="tab-btn" onclick="switchTab('books', this)">📚 Books</button>
+            `;
+        }
+
+        function renderStats() {
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            const container = document.getElementById('statsContainer');
+            container.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number" id="articlesCount">${data.articles.length}</div>
+                    <div class="stat-label">Articles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pdfsCount">${data.pdfs.length}</div>
+                    <div class="stat-label">PDFs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="booksCount">${data.books.length}</div>
+                    <div class="stat-label">Books</div>
+                </div>
+            `;
+        }
+
+        function renderContent(items) {
+            const grid = document.getElementById('contentGrid');
+            if (!items || items.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--fade-text);">No content available</div>';
+                return;
+            }
+
+            const icons = { articles: '✍️', pdfs: '📄', books: '📚' };
+            grid.innerHTML = items.map(item => `
+                <div class="card" onclick="openDetailPage('${item.type}', ${item.id})">
+                    <div class="card-icon">${icons[item.type]}</div>
+                    <h3>${item.title}</h3>
+                    <div class="card-category">${item.category}</div>
+                    <p>${item.description.substring(0, 100)}...</p>
+                    <span class="card-read">Read →</span>
+                </div>
+            `).join('');
+        }
+
+        function switchTab(tab, btn) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            renderContent(data[tab]);
+        }
+
+        function scrollToContent() {
+            document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function filterContent() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            const filtered = [...data.articles, ...data.pdfs, ...data.books].filter(item =>
+                item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query)
+            );
+            renderContent(filtered);
+        }
+
+        function openDetailPage(type, id) {
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            const item = data[type].find(i => i.id === id);
+            if (item) {
+                document.getElementById('detailCategory').textContent = item.category;
+                document.getElementById('detailBadge').textContent = item.category;
+                document.getElementById('detailTitle').textContent = item.title;
+                document.getElementById('detailText').textContent = item.description;
+                document.getElementById('detailPage').classList.add('active');
+            }
+        }
+
+        function closeDetailPage() {
+            document.getElementById('detailPage').classList.remove('active');
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+
+        function toggleMenu2() {
+            document.getElementById('navLinks2').classList.toggle('show');
+        }
+
+        function showHome(e) {
+            if (e) e.preventDefault();
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('aboutPage').classList.remove('active');
+            if (document.getElementById('navLinks')) document.getElementById('navLinks').classList.remove('show');
+            loadContent();
+        }
+
+        function showAbout(e) {
+            if (e) e.preventDefault();
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('aboutPage').classList.add('active');
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('passwordInput').focus();
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            if (document.getElementById('passwordInput').value === ADMIN_PASSWORD) {
+                closeLoginModal();
+                document.getElementById('adminBtn').style.display = 'none';
+                document.getElementById('adminMode').classList.add('active');
+                loadAdminContent();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        function exitAdmin() {
+            document.getElementById('adminMode').classList.remove('active');
+            document.getElementById('adminBtn').style.display = 'flex';
+            loadContent();
+        }
+
+        function loadAdminContent() {
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            document.getElementById('articlesList').innerHTML = renderAdminList(data.articles);
+            document.getElementById('pdfsList').innerHTML = renderAdminList(data.pdfs);
+            document.getElementById('booksList').innerHTML = renderAdminList(data.books);
+        }
+
+        function renderAdminList(items) {
+            if (!items || items.length === 0) return '<p style="color: var(--fade-text);">No items</p>';
+            return items.map(item => `
+                <div class="admin-item">
+                    <div class="admin-item-info">
+                        <h4>${item.title}</h4>
+                        <p>${item.description.substring(0, 50)}...</p>
+                    </div>
+                    <div class="admin-item-actions">
+                        <button class="item-btn" onclick="editItem('${item.type}', ${item.id})">Edit</button>
+                        <button class="item-btn delete" onclick="deleteItem('${item.type}', ${item.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openAddForm() {
+            tempTags = [];
+            editingId = null;
+            editingType = null;
+            document.getElementById('formTitle').textContent = 'Add Content';
+            resetForm();
+            document.getElementById('formModal').classList.add('active');
+        }
+
+        function closeFormModal() {
+            document.getElementById('formModal').classList.remove('active');
+            editingId = null;
+            editingType = null;
+        }
+
+        function resetForm() {
+            document.getElementById('type').value = 'articles';
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('category').value = '';
+            document.getElementById('tagInput').value = '';
+            updateTagsDisplay();
+        }
+
+        function handleTagInput(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const tag = document.getElementById('tagInput').value.trim();
+                if (tag && !tempTags.includes(tag)) {
+                    tempTags.push(tag);
+                    document.getElementById('tagInput').value = '';
+                    updateTagsDisplay();
+                }
+            }
+        }
+
+        function removeTag(tag) {
+            tempTags = tempTags.filter(t => t !== tag);
+            updateTagsDisplay();
+        }
+
+        function updateTagsDisplay() {
+            const tagsInput = document.getElementById('tagsInput');
+            const tagInput = document.getElementById('tagInput');
+            tagsInput.innerHTML = tempTags.map(tag => `
+                <div class="tag-item">
+                    ${tag}<button type="button" onclick="removeTag('${tag}')">×</button>
+                </div>
+            `).join('');
+            tagsInput.appendChild(tagInput);
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            const type = document.getElementById('type').value;
+
+            if (editingId) {
+                const index = data[editingType].findIndex(i => i.id === editingId);
+                if (index !== -1) {
+                    data[editingType][index] = {
+                        id: editingId,
+                        title: document.getElementById('title').value,
+                        description: document.getElementById('description').value,
+                        category: document.getElementById('category').value,
+                        tags: tempTags,
+                        type: editingType
+                    };
+                }
+            } else {
+                data[type].push({
+                    id: Date.now(),
+                    title: document.getElementById('title').value,
+                    description: document.getElementById('description').value,
+                    category: document.getElementById('category').value,
+                    tags: tempTags,
+                    type: type
+                });
+            }
+
+            localStorage.setItem('islamicContent', JSON.stringify(data));
+            closeFormModal();
+            loadAdminContent();
+            renderStats();
+            alert('Content saved successfully');
+        }
+
+        function deleteItem(type, id) {
+            if (confirm('Delete this item?')) {
+                const data = JSON.parse(localStorage.getItem('islamicContent'));
+                data[type] = data[type].filter(i => i.id !== id);
+                localStorage.setItem('islamicContent', JSON.stringify(data));
+                loadAdminContent();
+                renderStats();
+            }
+        }
+
+        function editItem(type, id) {
+            const data = JSON.parse(localStorage.getItem('islamicContent'));
+            const item = data[type].find(i => i.id === id);
+            if (item) {
+                editingId = id;
+                editingType = type;
+                tempTags = [...item.tags];
+                document.getElementById('formTitle').textContent = 'Edit Content';
+                document.getElementById('type').value = type;
+                document.getElementById('title').value = item.title;
+                document.getElementById('description').value = item.description;
+                document.getElementById('category').value = item.category;
+                updateTagsDisplay();
+                document.getElementById('formModal').classList.add('active');
+            }
+        }
+
+        loadContent();
+    </script>
+</body>
+</html>
