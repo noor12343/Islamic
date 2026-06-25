@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic World — Knowledge Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --green: #1a7659;
+            --dark: #0f1419;
+            --mid: #1a1f2e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark), var(--mid));
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(15,20,25,0.98);
+            border-bottom: 2px solid var(--gold);
+            padding: 1rem 5%;
+            position: sticky; top: 0; z-index: 200;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .hd {
+            max-width: 1400px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; color: var(--gold); text-decoration: none;
+        }
+        .logo-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--gold), var(--green));
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; font-size: 26px;
+            animation: fl 3s ease-in-out infinite;
+        }
+        @keyframes fl { 50% { transform: translateY(-8px); } }
+        .logo-name { font-family: 'Playfair Display',serif; font-size: 1.4rem; font-weight: 700; }
+        .nav { display: flex; gap: 2rem; align-items: center; }
+        .nav a {
+            color: #ccc; text-decoration: none;
+            font-weight: 600; font-size: 0.92rem;
+            transition: color 0.3s; cursor: pointer;
+        }
+        .nav a:hover { color: var(--gold); }
+        .burger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--gold); }
+
+        /* HERO */
+        .hero {
+            padding: 5rem 5% 4rem; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.72)),
+                url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=1600&q=80') center/cover fixed;
+            min-height: 560px; display: flex; align-items: center; justify-content: center;
+        }
+        .hero-inner { animation: sd 0.8s ease; }
+        @keyframes sd { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .bas { font-size: 3.2rem; color: var(--gold); margin-bottom: 1.5rem; font-weight: 300; }
+        .hero h1 {
+            font-family: 'Playfair Display',serif; font-size: 3.6rem;
+            color: var(--gold); font-weight: 900; margin-bottom: 1rem;
+        }
+        .hero p { font-size: 1.15rem; max-width: 680px; margin: 0.8rem auto 2rem; color: #ddd; font-weight: 300; }
+        .btn-main {
+            padding: 1rem 2.5rem; border-radius: 8px; border: none;
+            background: linear-gradient(135deg, var(--gold), var(--green));
+            color: #000; font-weight: 700; font-size: 0.95rem;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); }
+
+        /* STATS */
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+            gap: 1.5rem; max-width: 1100px;
+            margin: -3.5rem auto 4rem; padding: 0 5%;
+            position: relative; z-index: 10;
+        }
+        .stat {
+            background: rgba(212,175,55,0.1); border: 2px solid var(--gold);
+            border-radius: 16px; padding: 1.8rem; text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat:hover { transform: translateY(-8px); }
+        .stat-n { font-size: 3rem; font-weight: 900; color: var(--gold); margin-bottom: 0.4rem; }
+        .stat-l { color: #aaa; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+
+        /* SEARCH */
+        .search-wrap { max-width: 580px; margin: 2rem auto; padding: 0 5%; }
+        .search-wrap input {
+            width: 100%; padding: 0.95rem 1.5rem;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid var(--gold); border-radius: 50px;
+            color: #fff; font-size: 1rem; transition: all 0.3s;
+        }
+        .search-wrap input:focus { outline: none; background: rgba(255,255,255,0.12); box-shadow: 0 0 25px rgba(212,175,55,0.3); }
+        .search-wrap input::placeholder { color: #777; }
+
+        /* MAIN */
+        .content-area { max-width: 1280px; margin: 0 auto; padding: 0 5% 3rem; }
+
+        .tabs {
+            display: flex; gap: 0.8rem; flex-wrap: wrap;
+            border-bottom: 2px solid var(--gold); padding-bottom: 1rem; margin-bottom: 2.5rem;
+        }
+        .tab {
+            padding: 0.75rem 1.6rem; background: transparent;
+            border: 2px solid transparent; color: #888; font-weight: 600;
+            border-radius: 50px; cursor: pointer; transition: all 0.3s;
+            text-transform: uppercase; font-size: 0.88rem;
+        }
+        .tab:hover { color: var(--gold); }
+        .tab.on { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        /* CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.05); border: 2px solid var(--gold);
+            border-radius: 16px; padding: 1.8rem; cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(212,175,55,0.25); border-color: var(--green); }
+        .card-ico { font-size: 2.2rem; margin-bottom: 0.8rem; }
+        .card h3 {
+            font-family: 'Playfair Display',serif; font-size: 1.45rem;
+            color: #fff; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.3;
+        }
+        .card-cat {
+            display: inline-block; padding: 0.4rem 1rem;
+            background: rgba(212,175,55,0.15); color: var(--gold);
+            border-radius: 20px; font-size: 0.76rem; font-weight: 600; margin-bottom: 0.8rem;
+        }
+        .card-snip { color: #bbb; line-height: 1.7; margin-bottom: 1.2rem; font-weight: 300; font-size: 0.9rem; }
+        .card-more { color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transition: transform 0.3s; display: inline-block; }
+        .card:hover .card-more { transform: translateX(6px); }
+        .no-content { grid-column: 1/-1; text-align: center; padding: 4rem; color: #666; font-size: 1.1rem; }
+
+        /* FOOTER */
+        footer {
+            background: rgba(15,20,25,0.97); padding: 3rem 5% 1.5rem;
+            border-top: 3px solid var(--gold); margin-top: 4rem;
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap: 2rem; margin-bottom: 2rem;
+        }
+        .footer-col h4 { color: var(--gold); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.88rem; letter-spacing: 1px; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 0.5rem; font-size: 0.88rem; transition: color 0.3s; cursor: pointer; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bot { border-top: 2px solid var(--gold); padding-top: 1.5rem; text-align: center; color: #555; font-size: 0.88rem; }
+        .bas-f { color: var(--gold); font-size: 1.4rem; margin-bottom: 0.4rem; }
+
+        /* ======== DETAIL PAGE ======== */
+        #detailPage {
+            display: none; position: fixed; inset: 0;
+            background: #f7f3ea; z-index: 400; overflow-y: auto;
+        }
+        #detailPage.show { display: block; }
+        .dp-header {
+            background: rgba(212,175,55,0.12); border-bottom: 3px solid var(--gold);
+            padding: 1.2rem 5%; position: sticky; top: 0; z-index: 401;
+            display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+        }
+        .dp-site-name { font-family: 'Playfair Display',serif; color: #555; font-size: 1.1rem; }
+        .dp-close {
+            background: linear-gradient(135deg,var(--gold),var(--green));
+            border: none; color: #fff; padding: 0.75rem 1.8rem;
+            border-radius: 8px; cursor: pointer; font-weight: 700;
+            text-transform: uppercase; font-size: 0.82rem; transition: all 0.3s;
+        }
+        .dp-close:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,175,55,0.35); }
+        .dp-body {
+            max-width: 820px; margin: 0 auto;
+            padding: 3.5rem 2.5rem 5rem;
+        }
+        .dp-badge {
+            display: inline-block; padding: 0.6rem 1.4rem;
+            background: var(--green); color: #fff; border-radius: 50px;
+            font-size: 0.78rem; font-weight: 700; margin-bottom: 1.5rem;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .dp-title {
+            font-family: 'Playfair Display',serif; font-size: 2.8rem;
+            color: #2a2a2a; margin-bottom: 2.5rem; font-weight: 900; line-height: 1.25;
+        }
+        .dp-text {
+            background: #fff; border-left: 5px solid var(--gold);
+            padding: 2.5rem 3rem; border-radius: 0 12px 12px 0;
+            line-height: 2; font-size: 1.08rem; color: #444;
+            font-weight: 300; letter-spacing: 0.3px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            white-space: pre-wrap; word-break: break-word;
+        }
+
+        /* ABOUT PAGE */
+        #aboutPage { display: none; }
+        #aboutPage.show { display: block; }
+        .ap-body { max-width: 880px; margin: 4rem auto; padding: 0 5%; }
+        .ap-box {
+            background: rgba(212,175,55,0.07); border: 2px solid var(--gold);
+            border-radius: 12px; padding: 2.5rem; line-height: 2;
+            font-size: 1.05rem; color: #bbb; font-weight: 300; margin-bottom: 2rem;
+        }
+
+        /* ADMIN FLOAT BUTTON */
+        #adminFloat {
+            position: fixed; bottom: 28px; right: 28px;
+            width: 62px; height: 62px;
+            background: linear-gradient(135deg,var(--gold),var(--green));
+            border: none; border-radius: 50%; color: #000; font-size: 26px;
+            cursor: pointer; box-shadow: 0 8px 24px rgba(212,175,55,0.45);
+            z-index: 300; animation: bnc 2s ease-in-out infinite;
+        }
+        @keyframes bnc { 50% { transform: translateY(-14px); } }
+        #adminFloat:hover { animation: none; transform: scale(1.12); }
+
+        /* MODAL BASE */
+        .modal {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.88); z-index: 500;
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(6px); overflow-y: auto; padding: 2rem 1rem;
+        }
+        .modal.show { display: flex; }
+        .mbox {
+            background: linear-gradient(135deg,rgba(15,20,25,0.99),rgba(26,118,89,0.12));
+            border: 2px solid var(--gold); border-radius: 16px;
+            padding: 2.5rem; max-width: 460px; width: 100%;
+            box-shadow: 0 20px 60px rgba(212,175,55,0.2); margin: auto;
+            animation: pi 0.35s ease;
+        }
+        @keyframes pi { from { opacity:0; transform:scale(0.94); } to { opacity:1; transform:scale(1); } }
+        .mbox h2 { font-family:'Playfair Display',serif; color:var(--gold); margin-bottom:1.5rem; font-size:1.55rem; }
+        .fg { margin-bottom: 1.1rem; }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 0.82rem;
+            background: rgba(212,175,55,0.06); border: 2px solid var(--gold);
+            border-radius: 8px; color: #fff; font-family: inherit; font-size: 0.93rem; transition: all 0.3s;
+        }
+        .fg input:focus, .fg textarea:focus, .fg select:focus {
+            outline: none; background: rgba(212,175,55,0.11); box-shadow: 0 0 14px rgba(212,175,55,0.2);
+        }
+        .fg input::placeholder, .fg textarea::placeholder { color: #666; }
+        .fg textarea { resize: vertical; min-height: 130px; }
+        .fg select option { background: var(--dark); }
+        .tag-box {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.7rem;
+            background: rgba(212,175,55,0.06); border: 2px solid var(--gold);
+            border-radius: 8px; min-height: 42px; align-content: flex-start;
+        }
+        .tag-chip {
+            background: var(--green); color: #fff; padding: 0.42rem 0.75rem;
+            border-radius: 14px; display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.82rem; font-weight: 600;
+        }
+        .tag-chip button { background: none; border: none; color: inherit; cursor: pointer; font-size: 1rem; padding: 0; line-height: 1; }
+        .tag-box input { border: none !important; background: transparent !important; color: #fff; flex: 1; min-width: 80px; padding: 0.2rem !important; font-size: 0.9rem; }
+        .tag-box input:focus { box-shadow: none !important; border: none !important; }
+        .mbtns { display: flex; gap: 1rem; margin-top: 1.4rem; }
+        .bsave { flex:1; padding:0.82rem; background:linear-gradient(135deg,var(--gold),var(--green)); border:none; border-radius:8px; color:#000; font-weight:700; cursor:pointer; text-transform:uppercase; transition:all 0.3s; }
+        .bsave:hover { transform:translateY(-2px); }
+        .bcanc { flex:1; padding:0.82rem; background:transparent; border:2px solid var(--gold); border-radius:8px; color:var(--gold); font-weight:700; cursor:pointer; text-transform:uppercase; transition:all 0.3s; }
+        .bcanc:hover { background:var(--gold); color:#000; }
+        .err { color:#ff6b6b; display:none; margin-top:0.8rem; font-weight:600; font-size:0.9rem; }
+
+        /* ADMIN PANEL */
+        #adminPanel {
+            display: none; position: fixed; inset: 0;
+            background: linear-gradient(135deg,var(--dark),var(--mid));
+            z-index: 450; flex-direction: column; overflow: hidden;
+        }
+        #adminPanel.show { display: flex; }
+        .ap-head {
+            background: rgba(212,175,55,0.1); border-bottom: 2px solid var(--gold);
+            padding: 1.4rem 5%; display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .ap-head h2 { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.7rem; }
+        .ap-ctrls { display:flex; gap:1rem; flex-wrap:wrap; }
+        .abt { padding:0.68rem 1.4rem; background:linear-gradient(135deg,var(--gold),var(--green)); border:none; border-radius:8px; color:#000; font-weight:700; cursor:pointer; text-transform:uppercase; font-size:0.83rem; transition:all 0.3s; }
+        .abt:hover { transform:translateY(-2px); }
+        .abt.ex { background:transparent; border:2px solid var(--gold); color:var(--gold); }
+        .abt.ex:hover { background:var(--gold); color:#000; }
+        .ap-scroll { flex:1; overflow-y:auto; padding:2rem 5%; max-width:1200px; margin:0 auto; width:100%; }
+        .ap-sec { background:rgba(212,175,55,0.05); border:2px solid var(--gold); border-radius:12px; padding:1.4rem; margin-bottom:2rem; }
+        .ap-sec h3 { color:var(--gold); font-size:1.1rem; margin-bottom:1.2rem; text-transform:uppercase; letter-spacing:1px; }
+        .ap-row { background:rgba(26,118,89,0.1); border:1px solid var(--green); border-radius:8px; padding:1.1rem; margin-bottom:0.7rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; transition:all 0.3s; }
+        .ap-row:hover { background:rgba(26,118,89,0.18); border-color:var(--gold); }
+        .ap-row-info h4 { color:var(--gold); margin-bottom:0.2rem; font-size:0.92rem; }
+        .ap-row-info p { color:#777; font-size:0.82rem; }
+        .ap-row-btns { display:flex; gap:0.5rem; }
+        .rb { padding:0.38rem 0.75rem; background:transparent; border:1px solid var(--green); color:var(--green); border-radius:5px; cursor:pointer; font-size:0.78rem; transition:all 0.2s; }
+        .rb:hover { background:var(--green); color:#fff; }
+        .rb.d { border-color:#ff6b6b; color:#ff6b6b; }
+        .rb.d:hover { background:#ff6b6b; color:#fff; }
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .nav { display:none; position:fixed; top:70px; left:0; right:0; background:var(--dark); flex-direction:column; padding:2rem; border-bottom:2px solid var(--gold); z-index:199; }
+            .nav.on { display:flex; }
+            .burger { display:block; }
+            .hero h1 { font-size:2.2rem; }
+            .bas { font-size:2.5rem; }
+            .dp-title { font-size:2rem; }
+            .dp-body { padding:2.5rem 1.5rem; }
+            .dp-text { padding:1.8rem 1.5rem; }
+            .grid { grid-template-columns:1fr; }
+            .stats { grid-template-columns:1fr; margin:-2rem 0 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hd">
+        <a class="logo" onclick="goHome()">
+            <div class="logo-icon">ﷺ</div>
+            <div class="logo-name">Islamic World</div>
+        </a>
+        <div class="nav" id="nav">
+            <a onclick="goTab('articles')">Articles</a>
+            <a onclick="goTab('pdfs')">PDFs</a>
+            <a onclick="goTab('books')">Books</a>
+            <a onclick="goAbout()">About</a>
+        </div>
+        <div class="burger" onclick="toggleNav()">☰</div>
+    </div>
+</header>
+
+<!-- HOME -->
+<div id="homePage">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="bas">﷽</div>
+            <h1>Islamic Knowledge Hub</h1>
+            <p>Authentic resources for seekers of Islamic knowledge</p>
+            <button class="btn-main" onclick="document.getElementById('mainArea').scrollIntoView({behavior:'smooth'})">Browse Library</button>
+        </div>
+    </section>
+
+    <div class="stats" id="statsBox"></div>
+
+    <div class="search-wrap">
+        <input type="text" id="searchInput" placeholder="Search articles, PDFs, books..." oninput="doSearch(this.value)">
+    </div>
+
+    <div class="content-area" id="mainArea">
+        <div class="tabs" id="tabsRow"></div>
+        <div class="grid" id="cardGrid"></div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a onclick="goTab('articles')">Articles and Notes</a>
+                <a onclick="goTab('pdfs')">PDF Documents</a>
+                <a onclick="goTab('books')">Books and References</a>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a onclick="goAbout()">About</a>
+                <a onclick="openLogin()">Admin</a>
+            </div>
+        </div>
+        <div class="footer-bot">
+            <div class="bas-f">﷽</div>
+            <p>© 2026 Islamic World — Dedicated to spreading authentic knowledge</p>
+        </div>
+    </footer>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="aboutPage">
+    <div class="ap-body">
+        <h1 style="color:var(--gold);margin-bottom:2rem;font-family:'Playfair Display',serif;font-size:2.5rem;">About Islamic World</h1>
+        <div class="ap-box">
+            Islamic World is dedicated to spreading authentic Islamic knowledge through accessible and scholarly resources. Our platform provides comprehensive materials on Islamic theology (Aqeedah), jurisprudence (Fiqh), hadith sciences, Quranic exegesis (Tafsir), and related disciplines. We believe in making Islamic learning available to everyone, regardless of their background. Our content is carefully curated to ensure accuracy and authenticity in accordance with classical Islamic scholarship.
+        </div>
+        <button class="btn-main" onclick="goHome()">Back to Home</button>
+    </div>
+    <footer>
+        <div class="footer-bot">
+            <div class="bas-f">﷽</div>
+            <p>© 2026 Islamic World</p>
+        </div>
+    </footer>
+</div>
+
+<!-- DETAIL PAGE -->
+<div id="detailPage">
+    <div class="dp-header">
+        <span class="dp-site-name">Islamic World</span>
+        <button class="dp-close" onclick="closeDetail()">← Back</button>
+    </div>
+    <div class="dp-body">
+        <div class="dp-badge" id="dpBadge"></div>
+        <h1 class="dp-title" id="dpTitle"></h1>
+        <div class="dp-text" id="dpText"></div>
+    </div>
+</div>
+
+<!-- ADMIN FLOAT -->
+<button id="adminFloat" onclick="openLogin()">🔒</button>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+    <div class="mbox">
+        <h2>Admin Access</h2>
+        <form onsubmit="doLogin(event)">
+            <div class="fg">
+                <input type="password" id="pwBox" placeholder="Enter password" required>
+            </div>
+            <div class="mbtns">
+                <button type="submit" class="bsave">Login</button>
+                <button type="button" class="bcanc" onclick="closeLogin()">Cancel</button>
+            </div>
+        </form>
+        <div class="err" id="loginErr">Incorrect password</div>
+    </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+    <div class="ap-head">
+        <h2>Admin Panel</h2>
+        <div class="ap-ctrls">
+            <button class="abt" onclick="openForm()">Add Content</button>
+            <button class="abt ex" onclick="exitAdmin()">Exit</button>
+        </div>
+    </div>
+    <div class="ap-scroll">
+        <div class="ap-sec"><h3>Articles</h3><div id="apArticles"></div></div>
+        <div class="ap-sec"><h3>PDFs</h3><div id="apPdfs"></div></div>
+        <div class="ap-sec"><h3>Books</h3><div id="apBooks"></div></div>
+    </div>
+</div>
+
+<!-- FORM MODAL -->
+<div class="modal" id="formModal">
+    <div class="mbox" style="max-width:500px;">
+        <h2 id="formHead">Add Content</h2>
+        <form onsubmit="saveItem(event)">
+            <div class="fg">
+                <select id="fType">
+                    <option value="articles">Article</option>
+                    <option value="pdfs">PDF</option>
+                    <option value="books">Book</option>
+                </select>
+            </div>
+            <div class="fg"><input type="text" id="fTitle" placeholder="Title" required></div>
+            <div class="fg"><textarea id="fBody" placeholder="Full content..." required></textarea></div>
+            <div class="fg"><input type="text" id="fCat" placeholder="Category (e.g. Fiqh, Aqeedah)" required></div>
+            <div class="fg">
+                <div class="tag-box" id="tagBox">
+                    <input type="text" id="tagInput" placeholder="Tags... press Enter to add" onkeydown="addTag(event)">
+                </div>
+            </div>
+            <div class="mbtns">
+                <button type="submit" class="bsave">Save</button>
+                <button type="button" class="bcanc" onclick="closeForm()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// ============================
+// CONFIG
+// ============================
+const PASS = 'Islamic123';
+const STORE_KEY = 'iw_v4';
+
+// ============================
+// STATE
+// ============================
+let curTab = 'articles';
+let curChips = [];
+let editId = null;
+let editType = null;
+
+// ============================
+// DATABASE
+// ============================
+function getDB() {
+    try {
+        const raw = localStorage.getItem(STORE_KEY);
+        if (!raw) return { articles: [], pdfs: [], books: [] };
+        const db = JSON.parse(raw);
+        if (!db.articles) db.articles = [];
+        if (!db.pdfs) db.pdfs = [];
+        if (!db.books) db.books = [];
+        return db;
+    } catch(e) {
+        return { articles: [], pdfs: [], books: [] };
+    }
+}
+
+function setDB(db) {
+    localStorage.setItem(STORE_KEY, JSON.stringify(db));
+}
+
+// Migrate old 'description' field to 'body'
+function migrateDB() {
+    const db = getDB();
+    let changed = false;
+    ['articles','pdfs','books'].forEach(t => {
+        db[t] = db[t].map(item => {
+            if (item.description !== undefined && item.body === undefined) {
+                item.body = item.description;
+                delete item.description;
+                changed = true;
+            }
+            if (!item.body) item.body = '';
+            if (!item.title) item.title = 'Untitled';
+            if (!item.category) item.category = 'General';
+            if (!Array.isArray(item.tags)) item.tags = [];
+            if (!item.type) item.type = t;
+            return item;
+        });
+    });
+    if (changed) setDB(db);
+}
+
+migrateDB();
+
+// ============================
+// STATS
+// ============================
+function renderStats() {
+    const db = getDB();
+    document.getElementById('statsBox').innerHTML = `
+        <div class="stat"><div class="stat-n">${db.articles.length}</div><div class="stat-l">Articles</div></div>
+        <div class="stat"><div class="stat-n">${db.pdfs.length}</div><div class="stat-l">PDF Documents</div></div>
+        <div class="stat"><div class="stat-n">${db.books.length}</div><div class="stat-l">Books</div></div>
+    `;
+}
+
+// ============================
+// TABS
+// ============================
+function renderTabs() {
+    document.getElementById('tabsRow').innerHTML = `
+        <button class="tab ${curTab==='articles'?'on':''}" onclick="switchTab('articles',this)">✍️ Articles</button>
+        <button class="tab ${curTab==='pdfs'?'on':''}" onclick="switchTab('pdfs',this)">📄 PDFs</button>
+        <button class="tab ${curTab==='books'?'on':''}" onclick="switchTab('books',this)">📚 Books</button>
+    `;
+}
+
+function switchTab(t, el) {
+    curTab = t;
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+    if (el) el.classList.add('on');
+    document.getElementById('searchInput').value = '';
+    renderCards(getDB()[curTab]);
+}
+
+function goTab(t) {
+    curTab = t;
+    goHome();
+}
+
+// ============================
+// CARDS — FIXED ONCLICK
+// ============================
+function renderCards(items) {
+    const grid = document.getElementById('cardGrid');
+    if (!items || items.length === 0) {
+        grid.innerHTML = '<div class="no-content">No content available yet</div>';
+        return;
+    }
+    // Deduplicate
+    const seen = new Set();
+    const uniq = items.filter(i => { if (seen.has(i.id)) return false; seen.add(i.id); return true; });
+    const ico = curTab==='articles' ? '✍️' : curTab==='pdfs' ? '📄' : '📚';
+    // Use data-id and data-type attributes instead of inline JS with quotes
+    grid.innerHTML = uniq.map(item => `
+        <div class="card" data-id="${item.id}" data-type="${item.type}">
+            <div class="card-ico">${ico}</div>
+            <h3>${safe(item.title)}</h3>
+            <div class="card-cat">${safe(item.category)}</div>
+            <p class="card-snip">${safe(item.body.substring(0,100))}...</p>
+            <span class="card-more">Read →</span>
+        </div>
+    `).join('');
+
+    // Attach click events after rendering
+    grid.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            const type = this.getAttribute('data-type');
+            openDetail(type, id);
+        });
+    });
+}
+
+function safe(str) {
+    return String(str || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ============================
+// SEARCH
+// ============================
+function doSearch(q) {
+    const db = getDB();
+    const low = q.toLowerCase();
+    const results = db[curTab].filter(i =>
+        i.title.toLowerCase().includes(low) ||
+        i.body.toLowerCase().includes(low) ||
+        i.category.toLowerCase().includes(low)
+    );
+    renderCards(results);
+}
+
+// ============================
+// DETAIL PAGE — FIXED
+// ============================
+function openDetail(type, id) {
+    const db = getDB();
+    const list = db[type] || [];
+    const item = list.find(i => i.id === id);
+    if (!item) return;
+
+    document.getElementById('dpBadge').textContent = item.category;
+    document.getElementById('dpTitle').textContent = item.title;
+    document.getElementById('dpText').textContent = item.body;
+    document.getElementById('detailPage').classList.add('show');
+    window.scrollTo(0,0);
+}
+
+function closeDetail() {
+    document.getElementById('detailPage').classList.remove('show');
+}
+
+// ============================
+// NAVIGATION
+// ============================
+function goHome() {
+    document.getElementById('homePage').style.display = 'block';
+    document.getElementById('aboutPage').classList.remove('show');
+    document.getElementById('nav').classList.remove('on');
+    renderStats();
+    renderTabs();
+    renderCards(getDB()[curTab]);
+}
+
+function goAbout() {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('aboutPage').classList.add('show');
+    document.getElementById('nav').classList.remove('on');
+}
+
+function toggleNav() {
+    document.getElementById('nav').classList.toggle('on');
+}
+
+// ============================
+// LOGIN
+// ============================
+function openLogin() {
+    document.getElementById('loginModal').classList.add('show');
+    setTimeout(() => document.getElementById('pwBox').focus(), 100);
+}
+
+function closeLogin() {
+    document.getElementById('loginModal').classList.remove('show');
+    document.getElementById('pwBox').value = '';
+    document.getElementById('loginErr').style.display = 'none';
+}
+
+function doLogin(e) {
+    e.preventDefault();
+    if (document.getElementById('pwBox').value === PASS) {
+        closeLogin();
+        document.getElementById('adminFloat').style.display = 'none';
+        document.getElementById('adminPanel').classList.add('show');
+        renderAdmin();
+    } else {
+        document.getElementById('loginErr').style.display = 'block';
+        document.getElementById('pwBox').value = '';
+    }
+}
+
+// ============================
+// ADMIN PANEL
+// ============================
+function exitAdmin() {
+    document.getElementById('adminPanel').classList.remove('show');
+    document.getElementById('adminFloat').style.display = 'flex';
+    goHome();
+}
+
+function renderAdmin() {
+    const db = getDB();
+    document.getElementById('apArticles').innerHTML = adminList(db.articles);
+    document.getElementById('apPdfs').innerHTML = adminList(db.pdfs);
+    document.getElementById('apBooks').innerHTML = adminList(db.books);
+}
+
+function adminList(items) {
+    if (!items.length) return '<p style="color:#555;padding:0.5rem;">No items</p>';
+    return items.map(i => `
+        <div class="ap-row">
+            <div class="ap-row-info">
+                <h4>${safe(i.title)}</h4>
+                <p>${safe(i.body.substring(0,60))}...</p>
+            </div>
+            <div class="ap-row-btns">
+                <button class="rb" onclick="startEdit('${i.type}',${i.id})">Edit</button>
+                <button class="rb d" onclick="delItem('${i.type}',${i.id})">Delete</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ============================
+// FORM
+// ============================
+function openForm() {
+    curChips = [];
+    editId = null; editType = null;
+    document.getElementById('formHead').textContent = 'Add Content';
+    document.getElementById('fType').value = 'articles';
+    document.getElementById('fTitle').value = '';
+    document.getElementById('fBody').value = '';
+    document.getElementById('fCat').value = '';
+    document.getElementById('tagInput').value = '';
+    refreshTags();
+    document.getElementById('formModal').classList.add('show');
+}
+
+function closeForm() {
+    document.getElementById('formModal').classList.remove('show');
+}
+
+function addTag(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const v = document.getElementById('tagInput').value.trim();
+        if (v && !curChips.includes(v)) {
+            curChips.push(v);
+            document.getElementById('tagInput').value = '';
+            refreshTags();
+        }
+    }
+}
+
+function removeTag(t) {
+    curChips = curChips.filter(c => c !== t);
+    refreshTags();
+}
+
+function refreshTags() {
+    const box = document.getElementById('tagBox');
+    const inp = document.getElementById('tagInput');
+    box.innerHTML = curChips.map(c => `
+        <div class="tag-chip">${safe(c)}<button type="button" onclick="removeTag('${c}')">×</button></div>
+    `).join('');
+    box.appendChild(inp);
+}
+
+function saveItem(e) {
+    e.preventDefault();
+    const db = getDB();
+    const type = editType || document.getElementById('fType').value;
+    const item = {
+        id: editId || Date.now(),
+        type: type,
+        title: document.getElementById('fTitle').value.trim(),
+        body: document.getElementById('fBody').value.trim(),
+        category: document.getElementById('fCat').value.trim(),
+        tags: [...curChips]
+    };
+    if (editId) {
+        const idx = db[editType].findIndex(i => i.id === editId);
+        if (idx !== -1) db[editType][idx] = item;
+    } else {
+        db[type].push(item);
+    }
+    setDB(db);
+    closeForm();
+    renderAdmin();
+}
+
+function startEdit(type, id) {
+    const db = getDB();
+    const item = db[type].find(i => i.id === id);
+    if (!item) return;
+    editId = id; editType = type;
+    curChips = [...(item.tags || [])];
+    document.getElementById('formHead').textContent = 'Edit Content';
+    document.getElementById('fType').value = type;
+    document.getElementById('fTitle').value = item.title;
+    document.getElementById('fBody').value = item.body;
+    document.getElementById('fCat').value = item.category;
+    document.getElementById('tagInput').value = '';
+    refreshTags();
+    document.getElementById('formModal').classList.add('show');
+}
+
+function delItem(type, id) {
+    if (!confirm('Delete this item?')) return;
+    const db = getDB();
+    db[type] = db[type].filter(i => i.id !== id);
+    setDB(db);
+    renderAdmin();
+}
+
+// ============================
+// BOOT
+// ============================
+goHome();
+</script>
+</body>
+</html>
