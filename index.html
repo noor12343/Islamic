@@ -1088,9 +1088,14 @@ function toggleTheme() {
 /* ============================================================
    FIXED ROBUST FONT SIZE ZOOM IN / OUT FUNCTION
    ============================================================ */
+// Variable ko top par define kiya
+let currentFontSize = 20; 
+
 function changeFontSize(amount) {
     currentFontSize = Math.max(14, Math.min(42, currentFontSize + amount));
-    const txtEl = document.getElementById('dpText');
+    
+    // Class ko target karne ke liye querySelector('.dp-text') ka istemal kiya
+    const txtEl = document.querySelector('.dp-text');
     if(txtEl) {
         txtEl.style.fontSize = currentFontSize + 'px';
     }
@@ -1101,6 +1106,12 @@ function changeFontSize(amount) {
     const saved = localStorage.getItem('iw_font_px');
     if(saved) {
         currentFontSize = parseInt(saved);
+        
+        // Page load par bhi font size apply karne ke liye code add kiya
+        setTimeout(() => {
+            const txtEl = document.querySelector('.dp-text');
+            if(txtEl) txtEl.style.fontSize = currentFontSize + 'px';
+        }, 100);
     }
 })();
 
